@@ -2,42 +2,20 @@
 
 namespace galapagos\php55;
 
-class closure_this_test extends \PHPUnit_Framework_TestCase
+use galapagos\abstract_test_case;
+
+class closure_this_test extends abstract_test_case
 {
-    function test_closure_this() {
-        $this->assertSame(<<<'EOF'
-<?php class foo
-{
-    public function bar()
-    {
-        $that = $this;
-        return function () use($that) {
-            return $that->baz();
-        };
-    }
-    public function baz()
-    {
-        return 'foo:bar:baz';
-    }
-}
-EOF
-            ,
-            transform_closure_this(<<<'EOF'
-<?php class foo
-{
-    public function bar()
-    {
-        return function () {
-            return $this->baz();
-        };
-    }
-    public function baz()
-    {
-        return 'foo:bar:baz';
-    }
-}
-EOF
-            )
+    /** @dataProvider provide_tests */
+    public function test_transform($name, $code, $expected) {
+        $this->assertSame(
+            $this->canonicalize($expected),
+            $this->canonicalize(transform_closure_this($code)),
+            $name
         );
+    }
+
+    public function provide_tests() {
+        return $this->getTests(__DIR__.'/closure_this', 'test');
     }
 }

@@ -1,0 +1,42 @@
+multiple closures in a method
+-----
+<?php
+
+class foo
+{
+    public function bar()
+    {
+        $x = function () {
+            return $this->baz();
+        };
+        $y = function () {
+            return $this->baz();
+        };
+        return [$x, $y];
+    }
+    public function baz()
+    {
+        return 'foo:bar:baz';
+    }
+}
+-----
+<?php
+
+class foo
+{
+    public function bar()
+    {
+        $that = $this;
+        $x = function () use($that) {
+            return $that->baz();
+        };
+        $y = function () use($that) {
+            return $that->baz();
+        };
+        return array($x, $y);
+    }
+    public function baz()
+    {
+        return 'foo:bar:baz';
+    }
+}

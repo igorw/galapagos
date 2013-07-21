@@ -1,0 +1,25 @@
+closure in method without $this
+-----
+<?php
+
+class foo
+{
+    public function bar()
+    {
+        return function () {
+            return 'foo:bar';
+        };
+    }
+}
+-----
+<?php
+
+class foo
+{
+    public function bar()
+    {
+        return function () {
+            return 'foo:bar';
+        };
+    }
+}

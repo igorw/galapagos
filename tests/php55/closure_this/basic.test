@@ -1,0 +1,34 @@
+$this in closures
+-----
+<?php
+
+class foo
+{
+    public function bar()
+    {
+        return function () {
+            return $this->baz();
+        };
+    }
+    public function baz()
+    {
+        return 'foo:bar:baz';
+    }
+}
+-----
+<?php
+
+class foo
+{
+    public function bar()
+    {
+        $that = $this;
+        return function () use($that) {
+            return $that->baz();
+        };
+    }
+    public function baz()
+    {
+        return 'foo:bar:baz';
+    }
+}

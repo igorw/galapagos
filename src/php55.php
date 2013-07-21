@@ -8,7 +8,7 @@ function transform_code($code, callable $transform) {
 
     $ast = $parser->parse($code);
     $ast = $transform($ast);
-    return '<?php ' . $prettyPrinter->prettyPrint($ast);
+    return '<?php'."\n\n".$prettyPrinter->prettyPrint($ast);
 }
 
 function transform_with_visitors($code, array $visitors) {
