@@ -1,5 +1,8 @@
 {
     "require": {
         "nikic/php-parser": "0.9.*@dev"
+    },
+    "autoload": {
+        "files": ["src/php55.php"]
     }
 }
