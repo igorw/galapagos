@@ -1,6 +1,6 @@
 <?php
 
-namespace galapagos\php55;
+namespace galapagos\php54;
 
 function transform_code($code, callable $transform) {
     $parser = new \PHPParser_Parser(new \PHPParser_Lexer);

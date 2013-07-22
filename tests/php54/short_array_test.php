@@ -1,6 +1,6 @@
 <?php
 
-namespace galapagos\php55;
+namespace galapagos\php54;
 
 const FILE_HEAD = "<?php\n\n";
 

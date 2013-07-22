@@ -1,6 +1,6 @@
 <?php
 
-namespace galapagos\php55;
+namespace galapagos\php54;
 
 use galapagos\abstract_test_case;
 
