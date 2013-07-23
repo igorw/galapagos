@@ -4,8 +4,7 @@ namespace galapagos\php54;
 
 use galapagos\abstract_test_case;
 
-class closure_this_test extends abstract_test_case
-{
+class closure_this_test extends abstract_test_case {
     /** @dataProvider provide_tests */
     public function test_transform($name, $code, $expected) {
         $this->assertSame(

@@ -31,8 +31,7 @@ function transform_closure_this($code) {
     ]);
 }
 
-class NodeVisitor_ClosureThis extends \PHPParser_NodeVisitorAbstract
-{
+class NodeVisitor_ClosureThis extends \PHPParser_NodeVisitorAbstract {
     private $method = null;
     private $closure = null;
 

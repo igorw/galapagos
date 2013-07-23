@@ -2,8 +2,7 @@
 
 namespace galapagos;
 
-abstract class abstract_test_case extends \PHPUnit_Framework_TestCase
-{
+abstract class abstract_test_case extends \PHPUnit_Framework_TestCase {
     protected function getTests($directory, $fileExtension) {
         $it = new \RecursiveDirectoryIterator($directory);
         $it = new \RecursiveIteratorIterator($it, \RecursiveIteratorIterator::LEAVES_ONLY);
