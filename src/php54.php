@@ -57,33 +57,27 @@ class NodeVisitor_ClosureThis extends \PHPParser_NodeVisitorAbstract
 
     public function leaveNode(\PHPParser_Node $node) {
         if ($node instanceof \PHPParser_Node_Expr_Closure) {
-            $has_that = $this->closure->getAttribute('has_that');
-            $this->closure = null;
-
-            if ($has_that) {
-                $node = clone $node;
+            if ($this->closure->getAttribute('has_that')) {
                 $node->uses = array_merge($node->uses, [
                     new \PHPParser_Node_Expr_Variable('that'),
                 ]);
-                return $node;
             }
+
+            $this->closure = null;
         }
 
         if ($node instanceof \PHPParser_Node_Stmt_ClassMethod) {
-            $has_that = $this->method->getAttribute('has_that');
-            $this->method = null;
-            $this->closure = null;
-
-            if ($has_that) {
-                $node = clone $node;
+            if ($this->method->getAttribute('has_that')) {
                 $node->stmts = array_merge([
                     new \PHPParser_Node_Expr_Assign(
                         new \PHPParser_Node_Expr_Variable('that'),
                         new \PHPParser_Node_Expr_Variable('this')
                     ),
                 ], $node->stmts);
-                return $node;
             }
+
+            $this->method = null;
+            $this->closure = null;
         }
     }
 }
