@@ -1,0 +1,19 @@
+callable typehint with multiple args
+-----
+<?php
+
+function foo(callable $bar, callable $baz)
+{
+}
+-----
+<?php
+
+function foo($bar, $baz)
+{
+    if (!is_callable($bar)) {
+        trigger_error(sprintf('Argument 1 passed to %s() must be callable, %s given', __FUNCTION__, gettype($bar)), E_ERROR);
+    }
+    if (!is_callable($baz)) {
+        trigger_error(sprintf('Argument 2 passed to %s() must be callable, %s given', __FUNCTION__, gettype($baz)), E_ERROR);
+    }
+}

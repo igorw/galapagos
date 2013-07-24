@@ -1,0 +1,18 @@
+callable typehint
+-----
+<?php
+
+function foo(callable $bar)
+{
+    return $bar('baz');
+}
+-----
+<?php
+
+function foo($bar)
+{
+    if (!is_callable($bar)) {
+        trigger_error(sprintf('Argument 1 passed to %s() must be callable, %s given', __FUNCTION__, gettype($bar)), E_ERROR);
+    }
+    return $bar('baz');
+}

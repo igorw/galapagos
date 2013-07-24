@@ -1,0 +1,19 @@
+callable typehint with other non-callable args
+-----
+<?php
+
+function foo(callable $bar, $baz, callable $qux)
+{
+}
+-----
+<?php
+
+function foo($bar, $baz, $qux)
+{
+    if (!is_callable($bar)) {
+        trigger_error(sprintf('Argument 1 passed to %s() must be callable, %s given', __FUNCTION__, gettype($bar)), E_ERROR);
+    }
+    if (!is_callable($qux)) {
+        trigger_error(sprintf('Argument 3 passed to %s() must be callable, %s given', __FUNCTION__, gettype($qux)), E_ERROR);
+    }
+}
