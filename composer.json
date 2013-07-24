@@ -3,6 +3,6 @@
         "nikic/php-parser": "0.9.*@dev"
     },
     "autoload": {
-        "files": ["src/php54.php"]
+        "files": ["autoload.php", "src/php54.php"]
     }
 }
