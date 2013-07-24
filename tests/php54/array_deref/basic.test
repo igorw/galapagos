@@ -1,0 +1,9 @@
+function array dereferencing
+-----
+<?php
+
+foo()['bar'];
+-----
+<?php
+
+($tmp = foo()) ? $tmp['bar'] : null;

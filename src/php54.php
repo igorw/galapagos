@@ -31,6 +31,12 @@ function transform_closure_this($code) {
     ]);
 }
 
+function transform_array_deref($code) {
+    return transform_with_visitors($code, [
+        new NodeVisitor_ArrayDeref,
+    ]);
+}
+
 class NodeVisitor_ClosureThis extends \PHPParser_NodeVisitorAbstract {
     private $method = null;
     private $closure = null;
@@ -77,6 +83,23 @@ class NodeVisitor_ClosureThis extends \PHPParser_NodeVisitorAbstract {
 
             $this->method = null;
             $this->closure = null;
+        }
+    }
+}
+
+class NodeVisitor_ArrayDeref extends \PHPParser_NodeVisitorAbstract {
+    public function enterNode(\PHPParser_Node $node) {
+        if ($node instanceof \PHPParser_Node_Expr_ArrayDimFetch
+            && $node->var instanceof \PHPParser_Node_Expr_FuncCall) {
+
+            $tmp = new \PHPParser_Node_Expr_Variable('tmp');
+            $null = new \PHPParser_Node_Expr_ConstFetch(new \PHPParser_Node_Name('null'));
+
+            return new \PHPParser_Node_Expr_Ternary(
+                new \PHPParser_Node_Expr_Assign($tmp, $node->var),
+                new \PHPParser_Node_Expr_ArrayDimFetch($tmp, $node->dim),
+                $null
+            );
         }
     }
 }
