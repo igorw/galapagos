@@ -2,10 +2,10 @@
 
 namespace galapagos\php54;
 
-use galapagos\abstract_test_case;
+use galapagos\AbstractTestCase;
 
-class callable_typehint_test extends abstract_test_case {
-    /** @dataProvider provide_tests */
+class CallableTypehintTest extends AbstractTestCase {
+    /** @dataProvider provideTests */
     public function test_transform($name, $code, $expected) {
         $this->assertSame(
             $this->canonicalize($expected),
@@ -14,7 +14,7 @@ class callable_typehint_test extends abstract_test_case {
         );
     }
 
-    public function provide_tests() {
+    public function provideTests() {
         return $this->getTests(__DIR__.'/callable_typehint', 'test');
     }
 }
