@@ -2,6 +2,17 @@
 
 namespace galapagos;
 
+function transform($code) {
+    return transform_with_visitors($code, visitors());
+}
+
+function visitors() {
+    return array_merge(
+        php54\visitors()
+        // , php53\visitors()
+    );
+}
+
 function transform_code($code, callable $transform) {
     $parser = new \PHPParser_Parser(new \PHPParser_Lexer);
     $prettyPrinter = new \PHPParser_PrettyPrinter_Default;

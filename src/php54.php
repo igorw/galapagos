@@ -4,6 +4,14 @@ namespace galapagos\php54;
 
 use galapagos as g;
 
+function visitors() {
+    return [
+        new ClosureThis,
+        new ArrayDeref,
+        new CallableTypehint,
+    ];
+}
+
 function transform_short_array($code) {
     return g\transform_with_visitors($code, []);
 }
