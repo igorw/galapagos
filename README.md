@@ -17,9 +17,11 @@ Inspired by lisp macros. Using the incredible
 * Traits
 * Object access on instantiation
 * Binary number format
+* Closure rebinding
+
+Edge cases:
 
 * Ensure `$that` gets passed to nested closures
-* Closure rebinding
 * Error on null result in function array dereferencing
 
 ### State
