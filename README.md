@@ -2,6 +2,8 @@
 
 Evolutionary language transformation.
 
+Read the related [blog post](https://igor.io/2013/07/26/evolving-syntax.html).
+
 Backport existing PHP features to previous versions through AST compilation.
 Inspired by lisp macros. Using the incredible
 [nikic/PHP-Parser](https://github.com/nikic/PHP-Parser).
