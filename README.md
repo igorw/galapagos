@@ -6,6 +6,8 @@ Backport existing PHP features to previous versions through AST compilation.
 Inspired by lisp macros. Using the incredible
 [nikic/PHP-Parser](https://github.com/nikic/PHP-Parser).
 
+![galapagos turtle](galapagos.png)
+
 ## Missing features
 
 ### 5.4
