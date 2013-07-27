@@ -4,7 +4,8 @@ namespace galapagos\php54;
 
 const FILE_HEAD = "<?php\n\n";
 
-class ShortArrayTest extends \PHPUnit_Framework_TestCase {
+class ShortArrayTest extends \PHPUnit_Framework_TestCase
+{
     /** @dataProvider provideTests */
     function testTransform($expected, $code) {
         $this->assertSame(FILE_HEAD.$expected, transform_short_array(FILE_HEAD.$code));
