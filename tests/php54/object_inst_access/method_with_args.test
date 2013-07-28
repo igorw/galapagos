@@ -1,0 +1,9 @@
+Object access on instantiation with method arguments
+-----
+<?php
+
+(new stdObject())->hello(null, null);
+-----
+<?php
+
+($tmp = new stdObject()) ? $tmp->hello(null, null) : null;

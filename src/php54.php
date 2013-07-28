@@ -9,6 +9,7 @@ function visitors() {
         new ClosureThis,
         new ArrayDeref,
         new CallableTypehint,
+        new ObjectInstAccess
     ];
 }
 
@@ -31,5 +32,11 @@ function transform_array_deref($code) {
 function transform_callable_typehint($code) {
     return g\transform_with_visitors($code, [
         new CallableTypehint,
+    ]);
+}
+
+function transform_object_inst_access($code) {
+    return g\transform_with_visitors($code, [
+        new ObjectInstAccess,
     ]);
 }

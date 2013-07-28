@@ -17,4 +17,15 @@ class ArrayDeref extends \PHPParser_NodeVisitorAbstract {
             );
         }
     }
+
+    public function leaveNode(\PHPParser_Node $node) {
+        if (($node instanceof \PHPParser_Node_Expr_ArrayDimFetch)
+            && $node->var instanceof \PHPParser_Node_Expr_Ternary) {
+            $subject = clone $node;
+            $subject->var = $node->var->if;
+            $node = $node->var;
+            $node->if = $subject;
+            return $node;
+        }
+    }
 }
