@@ -10,6 +10,8 @@ Inspired by lisp macros. Using the incredible
 
 ![galapagos turtle](galapagos.png)
 
+> It's turtles all the way down.
+
 ## Missing features
 
 ### 5.4
