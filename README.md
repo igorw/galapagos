@@ -21,6 +21,7 @@ Inspired by lisp macros. Using the incredible
 
 Edge cases:
 
+* Calling private methods from within closure
 * Ensure `$that` gets passed to nested closures
 * Error on null result in function array dereferencing
 
