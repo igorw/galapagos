@@ -6,4 +6,4 @@ foo()['bar']['test'];
 -----
 <?php
 
-($tmp = foo()) ? $tmp['bar']['test'] : null;
+($tmp = foo()) ? $tmp['bar']['test'] : $tmp['bar']['test'];

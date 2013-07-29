@@ -8,12 +8,11 @@ class ArrayDeref extends \PHPParser_NodeVisitorAbstract {
             && $node->var instanceof \PHPParser_Node_Expr_FuncCall) {
 
             $tmp = new \PHPParser_Node_Expr_Variable('tmp');
-            $null = new \PHPParser_Node_Expr_ConstFetch(new \PHPParser_Node_Name('null'));
 
             return new \PHPParser_Node_Expr_Ternary(
                 new \PHPParser_Node_Expr_Assign($tmp, $node->var),
                 new \PHPParser_Node_Expr_ArrayDimFetch($tmp, $node->dim),
-                $null
+                new \PHPParser_Node_Expr_ArrayDimFetch($tmp, $node->dim)
             );
         }
     }

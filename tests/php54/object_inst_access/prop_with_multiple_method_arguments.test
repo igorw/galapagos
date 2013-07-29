@@ -6,4 +6,4 @@ Object access on instantiation with method arguments
 -----
 <?php
 
-($tmp = new stdObject()) ? $tmp->hello->hello2->hello3 : null;
+($tmp = new stdObject()) ? $tmp->hello->hello2->hello3 : $tmp->hello->hello2->hello3;

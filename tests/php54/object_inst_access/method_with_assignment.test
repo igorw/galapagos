@@ -6,4 +6,4 @@ $var = $hello = (new stdObject())->hello();
 -----
 <?php
 
-$var = $hello = ($tmp = new stdObject()) ? $tmp->hello() : null;
+$var = $hello = ($tmp = new stdObject()) ? $tmp->hello() : $tmp->hello();
