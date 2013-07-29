@@ -1,0 +1,58 @@
+Traits conflict resolution
+-----
+<?php
+
+trait HelloTrait1
+{
+    public function test1()
+    {
+        return 'HelloTrait1';
+    }
+    public function test2()
+    {
+        return 'HelloTrait1';
+    }
+}
+
+trait HelloTrait2
+{
+    public function test1()
+    {
+        return 'HelloTrait2';
+    }
+    public function test2()
+    {
+        return 'HelloTrait2';
+    }
+}
+
+class TraitUser
+{
+    use HelloTrait1, HelloTrait2 {
+        HelloTrait2::test2 insteadof HelloTrait1;
+        HelloTrait1::test1 insteadof HelloTrait2;
+    }
+    
+    public function yay()
+    {
+        return 'helllo'; 
+    }
+}
+-----
+<?php
+
+class TraitUser
+{
+    public function yay()
+    {
+        return 'helllo'; 
+    }
+    public function test1()
+    {
+        return 'HelloTrait1';
+    }
+    public function test2()
+    {
+        return 'HelloTrait2';
+    }
+}

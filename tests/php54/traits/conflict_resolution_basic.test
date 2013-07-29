@@ -1,4 +1,4 @@
-Traits
+Traits conflict resolution basic
 -----
 <?php
 
@@ -14,9 +14,9 @@ class TraitUser
 {
     use HelloTrait;
     
-    public function yay()
+    public function test()
     {
-        return 'helllo'; 
+        return 'hello'; 
     }
 }
 -----
@@ -24,12 +24,8 @@ class TraitUser
 
 class TraitUser
 {
-    public function yay()
-    {
-        return 'helllo'; 
-    }
     public function test()
     {
-        return 'test';
+        return 'hello';
     }
 }
