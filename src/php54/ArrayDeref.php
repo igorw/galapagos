@@ -23,9 +23,12 @@ class ArrayDeref extends \PHPParser_NodeVisitorAbstract {
             && $node->var instanceof \PHPParser_Node_Expr_Ternary) {
             $subject = clone $node;
             $subject->var = $node->var->if;
-            $node = $node->var;
-            $node->if = $subject;
-            return $node;
+
+            return new \PHPParser_Node_Expr_Ternary(
+                $node->var->cond,
+                $subject,
+                $subject
+            );
         }
     }
 }
