@@ -27,10 +27,12 @@ class ClosureThis extends \PHPParser_NodeVisitorAbstract {
 
     public function leaveNode(\PHPParser_Node $node) {
         if ($node instanceof \PHPParser_Node_Expr_Closure) {
-            if ($this->closure->getAttribute('has_that')) {
-                $node->uses = array_merge($node->uses, [
-                    new \PHPParser_Node_Expr_Variable('that'),
-                ]);
+            if ($this->closure) {
+                if ($this->closure->getAttribute('has_that')) {
+                    $node->uses = array_merge($node->uses, [
+                        new \PHPParser_Node_Expr_Variable('that'),
+                    ]);
+                }
             }
 
             $this->closure = null;
