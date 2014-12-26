@@ -3,10 +3,11 @@
 namespace galapagos\php54;
 
 class Traits extends \PHPParser_NodeVisitorAbstract {
+
     public function __construct(Traits_Collector $traitsCollector = null) {
         $this->traitsCollector = $traitsCollector ?: new Traits_Collector;
     }
-    
+
     public function beforeTraverse(array $nodes) {
         $traverser = new \PHPParser_NodeTraverser;
         $traverser->addVisitor($this->traitsCollector);
@@ -47,7 +48,7 @@ class Traits extends \PHPParser_NodeVisitorAbstract {
         if ($node instanceof \PHPParser_Node_Stmt_Trait) {
             return false;
         }
-        
+
         if ($node instanceof \PHPParser_Node_Stmt_TraitUse) {
             return false;
         }
@@ -55,17 +56,20 @@ class Traits extends \PHPParser_NodeVisitorAbstract {
 }
 
 class Traits_Collector extends \PHPParser_NodeVisitorAbstract {
-    protected $traits = array();
+    public static $traits = array();
+
     public function enterNode(\PHPParser_Node $node) {
         if ($node instanceof \PHPParser_Node_Stmt_Trait) {
-            $this->traits[$node->name] = $node;
+            self::$traits[$node->name] = $node;
         }
     }
+
     public function hasTrait($name) {
-        return isset($this->traits[$name]);
+        return isset(self::$traits[$name]);
     }
+
     public function getTrait($name) {
-        return $this->traits[$name];
+        return self::$traits[$name];
     }
 }
 
@@ -73,6 +77,7 @@ class Traits_ConflictResolver extends \PHPParser_NodeVisitorAbstract {
     protected $classMethods = [];
     protected $trait;
     protected $traitUse;
+
     public function __construct(
         \PHPParser_Node_Stmt_Class $class,
         \PHPParser_Node_Stmt_Trait $trait,
@@ -84,7 +89,7 @@ class Traits_ConflictResolver extends \PHPParser_NodeVisitorAbstract {
         $this->trait = $trait;
         $this->traitUse = $traitUse;
     }
-    
+
     public function enterNode(\PHPParser_Node $node) {
         if ($node instanceof \PHPParser_Node_Stmt_ClassMethod) {
             foreach ($this->traitUse->adaptations as $adaption) {
@@ -97,12 +102,13 @@ class Traits_ConflictResolver extends \PHPParser_NodeVisitorAbstract {
             }
         }
     }
+
     public function leaveNode(\PHPParser_Node $node) {
         if ($node instanceof \PHPParser_Node_Stmt_ClassMethod
             && in_array($node->name, $this->classMethods)) {
             return false;
         }
-        
+
         if ($node instanceof \PHPParser_Node_Stmt_ClassMethod) {
             foreach ($this->traitUse->adaptations as $adaption) {
                 if ($adaption instanceof \PHPParser_Node_Stmt_TraitUseAdaptation_Precedence) {
@@ -117,4 +123,5 @@ class Traits_ConflictResolver extends \PHPParser_NodeVisitorAbstract {
             }
         }
     }
+
 }
