@@ -1,6 +1,6 @@
 {
     "require": {
-        "nikic/php-parser": "0.9.*@dev"
+        "nikic/php-parser": "~1.0.2"
     },
     "autoload": {
         "files": ["autoload.php"]
