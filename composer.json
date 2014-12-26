@@ -1,8 +1,9 @@
 {
-    "require": {
-        "nikic/php-parser": "~1.0.2"
-    },
-    "autoload": {
-        "files": ["autoload.php"]
-    }
+  "name": "endel/galapagos",
+  "require": {
+    "nikic/php-parser": "~1.0.2"
+  },
+  "autoload": {
+    "files": ["autoload.php"]
+  }
 }
