@@ -13,15 +13,22 @@ trait HelloTrait
 class TraitUser
 {
     use HelloTrait;
-    
+
     public function test()
     {
-        return 'hello'; 
+        return 'hello';
     }
 }
 -----
 <?php
 
+class HelloTrait
+{
+    public function test()
+    {
+        return 'test';
+    }
+}
 class TraitUser
 {
     public function test()

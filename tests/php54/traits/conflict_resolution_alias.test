@@ -33,20 +33,42 @@ class TraitUser
         HelloTrait1::test1 insteadof HelloTrait2;
         HelloTrait1::test2 as test3;
     }
-    
+
     public function yay()
     {
-        return 'helllo'; 
+        return 'helllo';
     }
 }
 -----
 <?php
 
+class HelloTrait1
+{
+    public function test1()
+    {
+        return 'HelloTrait1';
+    }
+    public function test2()
+    {
+        return 'HelloTrait1';
+    }
+}
+class HelloTrait2
+{
+    public function test1()
+    {
+        return 'HelloTrait2';
+    }
+    public function test2()
+    {
+        return 'HelloTrait2';
+    }
+}
 class TraitUser
 {
     public function yay()
     {
-        return 'helllo'; 
+        return 'helllo';
     }
     public function test1()
     {
