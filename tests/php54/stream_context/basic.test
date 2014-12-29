@@ -1,0 +1,11 @@
+Calling stream_context_create with more than 1 param.
+-----
+<?php
+
+$ctx = stream_context_create($options);
+$ctx = stream_context_create($options, $default);
+-----
+<?php
+
+$ctx = stream_context_create($options);
+$ctx = stream_context_create($options);

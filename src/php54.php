@@ -11,7 +11,8 @@ function visitors() {
         new CallableTypehint,
         new ObjectInstAccess,
         new Traits,
-        new SessionHandling
+        new SessionHandling,
+        new StreamContext
     ];
 }
 
@@ -52,5 +53,11 @@ function transform_traits($code) {
 function transform_session_handling($code) {
     return g\transform_with_visitors($code, [
         new SessionHandling,
+    ]);
+}
+
+function transform_stream_context($code) {
+    return g\transform_with_visitors($code, [
+        new StreamContext,
     ]);
 }
