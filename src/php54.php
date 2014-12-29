@@ -10,7 +10,8 @@ function visitors() {
         new ArrayDeref,
         new CallableTypehint,
         new ObjectInstAccess,
-        new Traits
+        new Traits,
+        new SessionHandling
     ];
 }
 
@@ -45,5 +46,11 @@ function transform_object_inst_access($code) {
 function transform_traits($code) {
     return g\transform_with_visitors($code, [
             new Traits,
+    ]);
+}
+
+function transform_session_handling($code) {
+    return g\transform_with_visitors($code, [
+        new SessionHandling,
     ]);
 }
