@@ -1,0 +1,35 @@
+Traits
+-----
+<?php
+
+trait HelloTrait
+{
+    public function test()
+    {
+        return 'test';
+    }
+}
+
+class TraitUser
+{
+    use HelloTrait;
+    
+    public function yay()
+    {
+        return 'helllo'; 
+    }
+}
+-----
+<?php
+
+class TraitUser
+{
+    public function yay()
+    {
+        return 'helllo'; 
+    }
+    public function test()
+    {
+        return 'test';
+    }
+}

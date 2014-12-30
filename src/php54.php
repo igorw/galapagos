@@ -9,7 +9,8 @@ function visitors() {
         new ClosureThis,
         new ArrayDeref,
         new CallableTypehint,
-        new ObjectInstAccess
+        new ObjectInstAccess,
+        new Traits
     ];
 }
 
@@ -38,5 +39,11 @@ function transform_callable_typehint($code) {
 function transform_object_inst_access($code) {
     return g\transform_with_visitors($code, [
         new ObjectInstAccess,
+    ]);
+}
+
+function transform_traits($code) {
+    return g\transform_with_visitors($code, [
+            new Traits,
     ]);
 }

@@ -1,0 +1,31 @@
+Traits conflict resolution basic
+-----
+<?php
+
+trait HelloTrait
+{
+    public function test()
+    {
+        return 'test';
+    }
+}
+
+class TraitUser
+{
+    use HelloTrait;
+    
+    public function test()
+    {
+        return 'hello'; 
+    }
+}
+-----
+<?php
+
+class TraitUser
+{
+    public function test()
+    {
+        return 'hello';
+    }
+}
