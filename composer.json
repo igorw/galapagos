@@ -1,7 +1,14 @@
 {
   "name": "endel/galapagos",
+  "authors": [{
+      "name": "Igor Wiedler",
+      "email": "igor@wiedler.ch"
+  }, {
+      "name": "Endel Dreyer",
+      "email": "endel.dreyer@gmail.com"
+  }],
   "require": {
-    "nikic/php-parser": "~1.0.2"
+    "nikic/php-parser": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "3.7.*"

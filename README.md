@@ -1,6 +1,6 @@
 # Galapagos
 
-Evolutionary language transformation.
+Evolutionary language transformation. Fork of [igorw](https://github.com/igorw)'s initial work.
 
 Read the related [blog post](https://igor.io/2013/07/26/evolving-syntax.html).
 
@@ -8,15 +8,10 @@ Backport existing PHP features to previous versions through AST compilation.
 Inspired by lisp macros. Using the incredible
 [nikic/PHP-Parser](https://github.com/nikic/PHP-Parser).
 
-![galapagos turtle](galapagos.png)
-
-> It's turtles all the way down.
-
 ## Missing features
 
 ### 5.4
 
-* Traits
 * Binary number format
 * Closure rebinding
 
