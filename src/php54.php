@@ -12,7 +12,8 @@ function visitors() {
         new ObjectInstAccess,
         new Traits,
         new SessionHandling,
-        new StreamContext
+        new StreamContext,
+        new IssetInstAccess
     ];
 }
 
@@ -59,5 +60,13 @@ function transform_session_handling($code) {
 function transform_stream_context($code) {
     return g\transform_with_visitors($code, [
         new StreamContext,
+    ]);
+}
+
+function transform_isset_inst_access($code) {
+    return g\transform_with_visitors($code, [
+        new ArrayDeref,
+        new ObjectInstAccess,
+        new IssetInstAccess,
     ]);
 }

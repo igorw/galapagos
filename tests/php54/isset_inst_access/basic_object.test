@@ -1,0 +1,9 @@
+Isset with object instant access
+-----
+<?php
+
+$isset = (isset(get_object()->one));
+-----
+<?php
+
+$isset = ($tmp = get_object()) ? isset($tmp->one) : isset($tmp->one);
