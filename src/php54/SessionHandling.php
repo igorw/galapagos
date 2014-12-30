@@ -10,14 +10,14 @@ class SessionHandling extends \PHPParser_NodeVisitorAbstract {
             $node->name == "session_set_save_handler" &&
             count($node->args) <= 2)
         {
-            $handlers = array('open', 'close', 'read', 'write', 'destroy', 'gc');
-            $args = array();
+            $handlers = ['open', 'close', 'read', 'write', 'destroy', 'gc'];
+            $args = [];
 
             foreach($handlers as $handler) {
-                array_push($args, new \PhpParser\Node\Arg(new \PhpParser\Node\Expr\Array_(array(
+                array_push($args, new \PhpParser\Node\Arg(new \PhpParser\Node\Expr\Array_([
                     $node->args[0]->value,
                     new \PhpParser\Node\Scalar\String($handler)
-                ))));
+                ])));
             }
 
             $node->args = $args;

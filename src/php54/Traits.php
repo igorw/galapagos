@@ -48,9 +48,9 @@ class Traits extends \PHPParser_NodeVisitorAbstract {
         if ($node instanceof \PHPParser_Node_Stmt_Trait) {
             // Leave traits implemented as classes.
             // It prevents that files that require/use them break.
-            $klass = new \PhpParser\Node\Stmt\Class_($node->name, array(
+            $klass = new \PhpParser\Node\Stmt\Class_($node->name, [
                 'stmts' => $node->stmts
-            ), $node->getAttributes());
+            ], $node->getAttributes());
             return $klass;
         }
 
@@ -61,7 +61,7 @@ class Traits extends \PHPParser_NodeVisitorAbstract {
 }
 
 class Traits_Collector extends \PHPParser_NodeVisitorAbstract {
-    public static $traits = array();
+    public static $traits = [];
 
     public function enterNode(\PHPParser_Node $node) {
         if ($node instanceof \PHPParser_Node_Stmt_Trait) {
