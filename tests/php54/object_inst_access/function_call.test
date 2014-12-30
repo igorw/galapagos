@@ -1,0 +1,9 @@
+Object access with function call
+-----
+<?php
+
+get_object()->hello;
+-----
+<?php
+
+($tmp = get_object()) ? $tmp->hello : $tmp->hello;
